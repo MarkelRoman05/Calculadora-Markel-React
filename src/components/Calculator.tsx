@@ -1,11 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
+import { Tooltip } from "react-tooltip";
 
 const Calculator = () => {
   const [input, setInput] = useState("0");
   const [result, setResult] = useState("");
 
   const handleButtonClick = (value: string) => {
+    if (value === "÷") {
+      value = "/";
+    }
     if (value === "X") {
       value = "*";
     }
@@ -52,7 +56,7 @@ const Calculator = () => {
           "=",
           "-",
           "+",
-          "/",
+          "÷",
         ].map((label) => (
           <Button
             className="calculator-button"
@@ -62,6 +66,9 @@ const Calculator = () => {
           />
         ))}
       </div>
+      <Tooltip anchorSelect=".calculator-button">
+        <span>Hey</span>
+      </Tooltip>
     </div>
   );
 };
